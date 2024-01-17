@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-web-response-deploy
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: k8s-web-response
+  template:
+    metadata:
+      labels:
+        app: k8s-web-response
+    spec:
+      containers:
+      - name: k8s-web-response
+        image: juralux/k8s-web-response
+        resources:
+          limits:
+            memory: "500Mi"
+            cpu: "500m" 
+          requests:
+            memory: "128Mi"
+            cpu: "250m"      
+        ports:
+        - containerPort: 3000
+
+
